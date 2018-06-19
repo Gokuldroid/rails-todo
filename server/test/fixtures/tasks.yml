@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  priority: 1
+  dead_line: 
+  reminder_date: 
+  done_state: 1
+  user_id: 1
+
+two:
+  description: MyString
+  priority: 1
+  dead_line: 
+  reminder_date: 
+  done_state: 1
+  user_id: 1
