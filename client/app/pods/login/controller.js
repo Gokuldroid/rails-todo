@@ -18,10 +18,9 @@ export default Controller.extend({
                 let { username, password } = this.getProperties('username', 'password');
                 this.get('session').authenticate('authenticator:rails-auth', username, password)
                 .then(()=>{
-                    console.log('success')
+                    this.transitionToRoute('/tasks');
                 })
                 .catch((reason) => {
-                    console.log('failed')
                     this.set('login_error_msg', 'Invalid credentails');
                 });
             }

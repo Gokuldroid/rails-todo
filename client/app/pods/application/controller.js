@@ -8,9 +8,11 @@ import EmberObject, {
 } from '@ember/object';
 
 export default Controller.extend({
+    session: Ember.inject.service('session'),
     actions: {
         logout() {
-
+            this.get('session').invalidate();
+            this.transitionToRoute('/login');
         }
     }
 });
