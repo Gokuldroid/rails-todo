@@ -1,0 +1,6 @@
+{{#if alertMsg}}
+<div class="alert {{if alertClass alertClass 'alert-danger'}}" role="alert">
+    {{alertMsg}}
+</div>
+{{/if}}
+{{yield}}
