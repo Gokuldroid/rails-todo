@@ -10,25 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_21_065411) do
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "username"
-    t.index ["email", "username"], name: "index_users_on_email_and_username", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+ActiveRecord::Schema.define(version: 20_180_621_122_528) do
+  create_table 'tasks', options: 'ENGINE=InnoDB DEFAULT CHARSET=latin1', force: :cascade do |t|
+    t.string 'description', null: false
+    t.integer 'priority', default: 0, null: false
+    t.datetime 'dead_line'
+    t.datetime 'reminder_date'
+    t.integer 'done_state', default: 0, null: false
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=latin1', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer 'sign_in_count', default: 0, null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.string 'current_sign_in_ip'
+    t.string 'last_sign_in_ip'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'username'
+    t.index %w[email username], name: 'index_users_on_email_and_username', unique: true
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  end
 end
