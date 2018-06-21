@@ -10,7 +10,6 @@ const {
 } = Ember;
 
 export default Controller.extend({
-    session: Ember.inject.service('session'),
     actions : {
         login(){
             this.set('login_clicked',true);

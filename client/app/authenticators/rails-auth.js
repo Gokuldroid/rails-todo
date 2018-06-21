@@ -3,19 +3,16 @@ import RSVP from 'rsvp';
 import Ember from 'ember';
 
 export default Base.extend({
+    rails_ajax: Ember.inject.service(),
+    session: Ember.inject.service(), 
     restore(data) {
-        return RSVP.resolve({ access_token: 'asdasdao2o3o12o' });
+        console.log(data);
+        return RSVP.reject();
     },
     authenticate(username, password) {
-        return new Promise((resolve, reject) => {
-            if (username == 'gokul') {
-                Ember.run(null, resolve, { access_token: 'asdasdao2o3o12o' });
-            } else {
-                Ember.run(null, reject, { error: 'invalid credentails' });
-            }
-        });
+        return this.get('rails_ajax').post('/login', { data: { username, password } });
     },
     invalidate(data) {
-        return RSVP.resolve();
+        return this.get('rails_ajax').post('/logout', { data: { data }});
     }
 });
