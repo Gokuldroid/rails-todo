@@ -1,0 +1,20 @@
+<div class="card task-item">
+  <div class="card-body">
+    <i class="material-icons float-right material-icons-sm" {{action 'delete'}}>delete</i>
+    <div>
+        <p>{{task.description}}</p>
+    </div>
+  </div>
+</div>
+{{yield}}
+
+{{!-- 
+
+ description: DS.attr('string'),
+    priority: DS.attr('number'),
+    admin: DS.attr('boolean'),
+    dead_line: DS.attr('date'),
+    reminder_date: DS.attr('date'),
+    done_state: DS.attr('number'),
+    created_at: DS.attr('date'),
+    updated_at: DS.attr('date') --}}

@@ -3,4 +3,13 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 
 export default Route.extend(AuthenticatedRouteMixin, {
+    model() {
+        return this.get('store').findAll('task');
+    },
+    actions: {
+        error(error, transition) {
+            console.log('error occured');
+            return true;
+        }
+    }
 });

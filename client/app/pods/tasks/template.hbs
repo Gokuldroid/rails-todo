@@ -1,1 +1,6 @@
+<div class="row">
+{{#each model as |task|}}
+    {{task-item task=task classNames='col-4'}}
+{{/each}}
+</div>
 {{outlet}}
