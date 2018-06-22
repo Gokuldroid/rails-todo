@@ -1,3 +1,22 @@
+<div class="task-top-bar">
+    <ul class="nav nav-tabs mb-10">
+        <li class="nav-item">
+            <a class="nav-link {{if (eq filter.priority -1) 'active'}}" {{action "filterByPriority" -1}}>All</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{if (eq filter.priority 3) 'active'}}" href="#"><span class="task-priority bg-danger" {{action 'filterByPriority' 3}}></span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{if (eq filter.priority 2) 'active'}}" href="#"><span class="task-priority bg-secondary" {{action 'filterByPriority' 2}}></span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{if (eq filter.priority 1) 'active'}}" href="#"><span class="task-priority bg-success" {{action 'filterByPriority' 1}}></span></a>
+        </li>
+        <div class="nav-item dropdown ml-auto">
+             {{pagination-bar}}
+        </div>
+    </ul>
+</div>
 <div class="row">
 {{#each model as |task|}}
     {{task-item task=task classNames='col-4'}}
@@ -9,7 +28,7 @@
 </div>
 {{outlet}}
 
-{{#dialog-box dialogBoxModel=newTaskModel}}
+{{#dialog-box dialogBoxModel=createTaskDialog}}
 <div class="form-group">
     <label>Description <span class="mandatory">*</span></label>
     {{textarea value=createTaskModal.description class="form-control" placeholder="Description"}}
@@ -21,5 +40,8 @@
 <div class="form-group">
     <label>Remind at</label>
     {{input type='date' value=createTaskModal.reminder_date class="form-control" placeholder="Remind ad"}}
+</div>
+<div class="form-group">
+    <div>Priority <span class="pl-10">{{task-priority task=createTaskModal saveOnChange=false}}</span></div>
 </div>
 {{/dialog-box}}

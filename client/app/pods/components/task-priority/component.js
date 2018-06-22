@@ -6,11 +6,9 @@ import dialogBoxModel from '../dialog-box/dialog-box-model';
 export default Component.extend({
     tagName: 'span',
     codeVsColor: {
-        1: 'bg-success',
-        2: 'bg-primary',
-        3: 'bg-secondary',
-        4: 'bg-warning',
-        5: 'bg-danger'
+        3: 'bg-danger',
+        2: 'bg-secondary',
+        1: 'bg-success'
     },
     priorityColor: Ember.computed('task.priority', function () {
         return this.get('codeVsColor')[this.get('task.priority')];
