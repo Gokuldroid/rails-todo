@@ -5,3 +5,16 @@
 .material-icons{
     cursor: pointer;
 }
+
+.floating-btn{
+    border-radius: 50%;padding-top:12px;
+    &.bottom-right{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+.mandatory{
+    color: red;
+}

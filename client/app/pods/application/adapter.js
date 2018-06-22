@@ -9,8 +9,6 @@ export default DS.RESTAdapter.extend({
         if (authToken) {
             headers['Authorization'] = authToken;
         }
-        console.log(headers);
-        console.log(this.get('session'));
         return headers;
     })
 });

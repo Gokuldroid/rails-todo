@@ -5,11 +5,11 @@
                 {{alert-bar alertMsg=login_error}}
                 {{alert-bar alertMsg=login_error_msg autoHide=true}}
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Username</label>
+                    <label for="formGroupExampleInput">Username <span class="mandatory">*</span></label>
                     {{input value=username class="form-control" placeholder="Username"}}
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput2">Password</label>
+                    <label for="formGroupExampleInput2">Password <span class="mandatory">*</span></label>
                     {{input value=password placeholder="Password" type='password' class="form-control"}}
                 </div>
                 <div class="form-group">
