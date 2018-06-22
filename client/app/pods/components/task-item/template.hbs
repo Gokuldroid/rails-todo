@@ -1,9 +1,15 @@
 <div class="card task-item">
   <div class="card-body">
-    <i class="material-icons float-right material-icons-sm" {{action 'delete'}}>delete</i>
     <div>
         <p>{{task.description}}</p>
     </div>
+  </div>
+  <div class="p-10">
+    <small class="float-left">Created at : {{date-format task.created_at}}</small>
+    <div class="float-right">
+      {{task-priority task=task saveOnChange=true}}
+    </div>
+    <i class="material-icons float-right material-icons-sm" {{action 'delete'}} style="padding: 2px 10px;">delete</i>
   </div>
 </div>
 {{yield}}

@@ -9,8 +9,9 @@ export default Component.extend({
     },
     openObserver : Ember.observer('dialogBoxModel.isOpen',function(){
         if(this.get('dialogBoxModel.isOpen')){
-            console.log(this);
             this.$().find('.modal').modal();
+        }else{
+            this.$().find('.modal').modal('hide');
         }
     })
 });

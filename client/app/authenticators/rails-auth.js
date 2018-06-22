@@ -6,7 +6,6 @@ export default Base.extend({
     rails_ajax: Ember.inject.service(),
     session: Ember.inject.service(),
     restore(data) {
-        console.log(data);
         return new Promise(function (resolve, reject) {
             resolve(data);
         });

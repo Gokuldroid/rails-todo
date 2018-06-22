@@ -1,0 +1,10 @@
+<span class="task-priority {{priorityColor}}" {{action 'openPriorityDialog'}}></span>
+{{yield}}
+
+{{#dialog-box dialogBoxModel=priorityDialog}}
+    {{#each-in codeVsColor as |code color|}}
+        <div class="row justify-content-center">
+            <span class="task-priority {{color}} col-11 m-10 p-20" {{action 'changePriority' code}}></span>
+        </div>
+    {{/each-in}}
+{{/dialog-box}}

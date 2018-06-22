@@ -1,11 +1,21 @@
 .task-item.card{
-    min-height: 100px;
-    max-height: 100px;
     margin-bottom: 15px;
     .card-body{
+        min-height: 80px;
+        max-height: 80px;
         p{
             padding: 10px 20px 10px 10px;
-            display: inline;
+            font-size: 17px;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
+}
+
+span.task-priority{
+    border-radius: 5px;
+    padding: 0px 20px;
+    cursor: pointer;
 }
