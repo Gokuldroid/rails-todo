@@ -10,5 +10,13 @@ export default DS.RESTAdapter.extend({
             headers['Authorization'] = authToken;
         }
         return headers;
-    })
+    }),
+    normalizeQueryResponse(store, clazz, payload) {
+        const result = this._super(...arguments);
+        console.log(pagination);
+        result.pagination = result.pagination || payload.pagination || {};
+        console.log(result);
+        return result;
+    }
+
 });

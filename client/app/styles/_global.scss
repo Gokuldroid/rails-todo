@@ -19,6 +19,9 @@
     color: red;
 }
 
+.pointer{
+    cursor: pointer;
+}
 
 @for $i from 0 through 5{
  .p-#{$i * 5}{

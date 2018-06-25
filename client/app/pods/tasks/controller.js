@@ -1,15 +1,24 @@
 import Controller from '@ember/controller';
 import dialogBoxModel from '../components/dialog-box/dialog-box-model';
+import Ember from 'ember';
 
 
 export default Controller.extend({
     filter: { priority: -1 },
+    pagination: Ember.computed.alias('model.meta.pagination'),
     actions: {
         newTask() {
             this._createNewTask();
         },
         filterByPriority(priority) {
             this.set('filter.priority', priority);
+            this._getTasks();
+        },
+        onTaskPageChange(pagination) {
+            this.get('pagination', pagination);
+            this._getTasks();
+        },
+        refreshModel(){
             this._getTasks();
         }
     },
@@ -34,10 +43,12 @@ export default Controller.extend({
     _getTasks() {
         let _this = this;
         let filter = this.get('filter');
+        let pagination = Ember.getProperties(this.get('pagination'), 'page', 'per_page');
         this.get('store').query('task', {
-            filter
+            filter,
+            pagination
         }).then(function (result) {
-            _this.set('modal',result);    
+            _this.set('model', result);
         });
     }
 });

@@ -5,7 +5,9 @@ export default Component.extend({
         delete(){
             let task = this.get('task');
             task.deleteRecord();
-            task.save();
+            task.save().then(()=>{
+                this.attrs['on-delete']();
+            });
         }
     }
 });

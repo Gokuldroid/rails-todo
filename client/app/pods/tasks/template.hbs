@@ -1,25 +1,25 @@
 <div class="task-top-bar">
     <ul class="nav nav-tabs mb-10">
-        <li class="nav-item">
-            <a class="nav-link {{if (eq filter.priority -1) 'active'}}" {{action "filterByPriority" -1}}>All</a>
+        <li class="nav-item pointer" {{action "filterByPriority" -1 bubbles=false}}>
+            <a class="nav-link {{if (eq filter.priority -1) 'active'}}">All</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link {{if (eq filter.priority 3) 'active'}}" href="#"><span class="task-priority bg-danger" {{action 'filterByPriority' 3}}></span></a>
+        <li class="nav-item pointer" {{action 'filterByPriority' 3 bubbles=false}}>
+            <a class="nav-link {{if (eq filter.priority 3) 'active'}}" href="#"><span class="task-priority bg-danger"></span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link {{if (eq filter.priority 2) 'active'}}" href="#"><span class="task-priority bg-secondary" {{action 'filterByPriority' 2}}></span></a>
+        <li class="nav-item pointer" {{action 'filterByPriority' 2 bubbles=false}}>
+            <a class="nav-link {{if (eq filter.priority 2) 'active'}}" href="#"><span class="task-priority bg-secondary"></span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link {{if (eq filter.priority 1) 'active'}}" href="#"><span class="task-priority bg-success" {{action 'filterByPriority' 1}}></span></a>
+        <li class="nav-item pointer" {{action 'filterByPriority' 1 bubbles=false}}>
+            <a class="nav-link {{if (eq filter.priority 1) 'active'}}" href="#"><span class="task-priority bg-success"></span></a>
         </li>
-        <div class="nav-item dropdown ml-auto">
-             {{pagination-bar}}
+        <div class="nav-item pointer dropdown ml-auto">
+             {{pagination-bar on-page-change=(action 'onTaskPageChange') pagination=pagination}}
         </div>
     </ul>
 </div>
 <div class="row">
 {{#each model as |task|}}
-    {{task-item task=task classNames='col-4'}}
+    {{task-item task=task classNames='col-4' on-delete=(action 'refreshModel')}}
 {{/each}}
 </div>
 

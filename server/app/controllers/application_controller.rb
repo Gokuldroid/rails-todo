@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   attr_reader :current_user
   skip_before_action :verify_authenticity_token
-  
+  include ApplicationHelper
+
   protected
 
   def authenticate_request!
@@ -28,5 +29,9 @@ class ApplicationController < ActionController::Base
 
   def user_id_in_token?
     http_token && auth_token && auth_token[:user_id].to_i
+  end
+
+  def print_json_result(result ,meta)
+    render json: { result.table_name => result, meta: meta }, status: :ok
   end
 end
