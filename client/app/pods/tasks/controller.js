@@ -9,6 +9,19 @@ export default Controller.extend({
     sort_by : 'dead_line',
     done_state : [1],
 
+    hasTodoTasks : Ember.computed('done_state.[]',{
+        get(key){
+            return this.get('done_state').includes(1);
+        },
+        set(key,value){
+            if(this.get('done_state').includes(1)){
+                this.get('done_state').removeObject(1);
+            }else{
+                this.get('done_state').pushObject(1);
+            }
+            return this.get('done_state').includes(1);
+        }
+    }),
     hasDoneTasks : Ember.computed('done_state.[]',{
         get(key){
             return this.get('done_state').includes(2);
@@ -35,7 +48,11 @@ export default Controller.extend({
             return this.get('done_state').includes(3);
         }
     }),
-
+    emptyObserver : Ember.observer('done_state.[]',function(){
+        if(Ember.isEmpty(this.get('done_state'))){
+            this.send('toggleParam','hasTodoTasks');
+        }
+    }),
     actions: {
         newTask() {
             this._createNewTask();
