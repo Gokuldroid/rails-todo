@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import Ember from 'ember';
 
 export default Component.extend({
     actions :{
@@ -9,5 +10,13 @@ export default Component.extend({
                 this.attrs['on-delete']();
             });
         }
-    }
+    },
+    task_border : Ember.computed('task.done_state',function(){
+        let done_state = this.get('task.done_state');
+        switch (done_state) {
+            case 1: return null
+            case 2: return 'border border-warning';
+            case 3: return 'border border-success bg-light';
+        }
+    })
 });

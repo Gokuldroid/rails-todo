@@ -20,12 +20,12 @@
                     More
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if hasDoneTasks 'active'}}">done</i>Show done tasks</a>
-                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if hasArchieveTasks 'active'}}">done</i>Show archieved tasks</a>
+                    <a class="dropdown-item" {{action "toggleParam" 'hasDoneTasks' bubbles=false}}><i class="material-icons material-icons-done {{if hasDoneTasks 'active'}}">done</i>Show done tasks</a>
+                    <a class="dropdown-item" {{action "toggleParam" 'hasArchieveTasks' bubbles=false}}><i class="material-icons material-icons-done {{if hasArchieveTasks 'active'}}">done</i>Show archieved tasks</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'deadline') 'active'}}">done</i>Sort by deadline</a>
-                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'created_time') 'active'}}">done</i>Sort by created time</a>
-                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'priority') 'active'}}">done</i>Sort by priority</a>
+                    <a class="dropdown-item" {{action "toggleSort" 'dead_line' bubbles=false}}><i class="material-icons material-icons-done {{if (eq sort_by 'dead_line') 'active'}}">done</i>Sort by deadline</a>
+                    <a class="dropdown-item" {{action "toggleSort" 'created_at' bubbles=false}}><i class="material-icons material-icons-done {{if (eq sort_by 'created_at') 'active'}}">done</i>Sort by created time</a>
+                    <a class="dropdown-item" {{action "toggleSort" 'priority' bubbles=false}}><i class="material-icons material-icons-done {{if (eq sort_by 'priority') 'active'}}">done</i>Sort by priority</a>
                 </div>
             </div>
         </div>

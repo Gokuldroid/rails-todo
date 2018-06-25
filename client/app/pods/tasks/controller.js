@@ -6,8 +6,8 @@ import Ember from 'ember';
 export default Controller.extend({
     filter: { priority: -1 },
     pagination: Ember.computed.alias('model.meta.pagination'),
-    sort_by : 'deadline',
-    done_state : [1 ,2],
+    sort_by : 'dead_line',
+    done_state : [1],
 
     hasDoneTasks : Ember.computed('done_state.[]',{
         get(key){
@@ -52,7 +52,15 @@ export default Controller.extend({
         refreshModel() {
             this._getTasks();
         },
-
+        toggleParam(param){
+            this.toggleProperty(param);
+            this._getTasks();
+            this.set('pagination.page', 1);
+        },
+        toggleSort(sort){
+            this.set('sort_by',sort);
+            this._getTasks();
+        }
     },
     _createNewTask() {
         let buttons = [{ text: 'Create', style: 'btn-primary', event: 'create' }, { text: 'Cancel', style: 'btn-link', event: 'cancel' }]
@@ -76,11 +84,13 @@ export default Controller.extend({
         let _this = this;
         let filter = this.get('filter');
         let pagination = Ember.getProperties(this.get('pagination'), 'page', 'per_page');
-        let sort_by = this.get('sort_by')
+        let sort_by = this.get('sort_by');
+        let done_state = JSON.stringify(this.get('done_state'));
         this.get('store').query('task', {
             filter,
             pagination,
-            sort_by
+            sort_by,
+            done_state
         }).then(function (result) {
             _this.set('model', result);
         });

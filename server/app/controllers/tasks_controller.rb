@@ -5,6 +5,8 @@ class TasksController < ApplicationController
     # @tasks = Task.all
     result = filter_user(Task)
     result = filter_options(result)
+    result = done_state(result)
+    result = sort_by(result)
     pagination = ApplicationHelper.construct_patingation_params(params, result)
     result = ApplicationHelper.paginate(result, pagination)
     render json: { tasks: result, meta: { pagination: pagination } }, status: :ok
@@ -52,6 +54,15 @@ class TasksController < ApplicationController
 
   def filter_id(task, id)
     task.where('id = ?', id)
+  end
+
+  def sort_by(task)
+    task.order((params[:sort_by] || :dead_line).to_sym => :desc)
+  end
+
+  def done_state(task)
+    puts params[:done_state]
+    task.where(done_state: (params[:done_state] && JSON.parse(params[:done_state])) || [1])
   end
 
   def filter_options(task)
