@@ -13,7 +13,21 @@
             <a class="nav-link {{if (eq filter.priority 1) 'active'}}" href="#"><span class="task-priority bg-success"></span></a>
         </li>
         <div class="nav-item pointer dropdown ml-auto">
-             {{pagination-bar on-page-change=(action 'onTaskPageChange') pagination=pagination}}
+             {{pagination-bar on-page-change=(action 'onTaskPageChange') pagination=pagination class='float-right'}}
+            <button type="button" class="btn btn-icn btn-outline-secondary float-right mr-15">Expoer as CVS <i class="material-icons">cloud_download</i></button>
+            <div class="btn-group mr-15">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if hasDoneTasks 'active'}}">done</i>Show done tasks</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if hasArchieveTasks 'active'}}">done</i>Show archieved tasks</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'deadline') 'active'}}">done</i>Sort by deadline</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'created_time') 'active'}}">done</i>Sort by created time</a>
+                    <a class="dropdown-item" href="#"><i class="material-icons material-icons-done {{if (eq sort_by 'priority') 'active'}}">done</i>Sort by priority</a>
+                </div>
+            </div>
         </div>
     </ul>
 </div>

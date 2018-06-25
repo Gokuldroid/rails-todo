@@ -3,10 +3,10 @@ class TasksController < ApplicationController
 
   def index
     # @tasks = Task.all
-    pagination = ApplicationHelper.construct_patingation_params(params, Task)
-    result = ApplicationHelper.paginate(Task, pagination)
-    result = filter_user(result)
+    result = filter_user(Task)
     result = filter_options(result)
+    pagination = ApplicationHelper.construct_patingation_params(params, result)
+    result = ApplicationHelper.paginate(result, pagination)
     render json: { tasks: result, meta: { pagination: pagination } }, status: :ok
   end
 
