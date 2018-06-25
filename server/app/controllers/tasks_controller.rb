@@ -45,7 +45,7 @@ class TasksController < ApplicationController
   private
 
   def permit_attr
-    params[:task].permit(:description, :priority, :dead_line, :reminder_date)
+    params[:task].permit(:description, :priority, :dead_line, :reminder_date, :done_state)
   end
 
   def filter_user(task)

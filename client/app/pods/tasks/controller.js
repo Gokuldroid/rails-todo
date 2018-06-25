@@ -63,14 +63,15 @@ export default Controller.extend({
         }
     },
     _createNewTask() {
+        let _this = this;
         let buttons = [{ text: 'Create', style: 'btn-primary', event: 'create' }, { text: 'Cancel', style: 'btn-link', event: 'cancel' }]
-        let task = this.get('store').createRecord('task', { priority: 3 })
+        let task = this.get('store').createRecord('task', { priority: 3 ,done_state : 1})
         let box = dialogBoxModel.create({
             title: 'Create task',
             buttons,
             eventListener: function (event, button) {
                 if (event == 'create') {
-                    task.save();
+                    task.save().then(()=>{_this._getTasks()});
                 } else {
                     task.rollbackAttributes();
                 }

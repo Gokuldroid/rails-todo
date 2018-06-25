@@ -1,5 +1,6 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
+    <li class="page-item"><a class="page-link">Page : </a></li>
     {{#each navArray as |navItem|}}
     <li class="page-item {{if (eq navItem.page pagination.page) 'active'}}" {{action 'navigatePage' navItem.page }}>
       <a class="page-link">{{navItem.name}}</a>
