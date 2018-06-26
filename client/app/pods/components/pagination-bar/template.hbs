@@ -1,4 +1,5 @@
-<nav aria-label="Page navigation example">
+{{#if pagination.total_pages}}
+<nav>
   <ul class="pagination justify-content-end">
     <li class="page-item"><a class="page-link">Page : </a></li>
     {{#each navArray as |navItem|}}
@@ -8,4 +9,5 @@
     {{/each}}
   </ul>
 </nav>
+{{/if}}
 {{yield}}

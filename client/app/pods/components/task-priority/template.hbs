@@ -1,4 +1,4 @@
-<span class="task-priority {{priorityColor}}" {{action 'openPriorityDialog'}}></span>
+<span class="task-priority {{priorityColor}}" {{action 'openPriorityDialog' bubbles=false preventDefault=true}}></span>
 {{yield}}
 
 {{#dialog-box dialogBoxModel=priorityDialog}}

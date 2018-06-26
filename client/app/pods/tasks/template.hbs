@@ -14,7 +14,7 @@
         </li>
         <div class="nav-item pointer dropdown ml-auto">
              {{pagination-bar on-page-change=(action 'onTaskPageChange') pagination=pagination class='float-right'}}
-            <button type="button" class="btn btn-icn btn-outline-secondary float-right mr-15">Expoer as CVS <i class="material-icons">cloud_download</i></button>
+            <button type="button" class="btn btn-icn btn-outline-secondary float-right mr-15 {{unless pagination.total_pages 'd-none'}}">Expoer as CVS <i class="material-icons">cloud_download</i></button>
             <div class="btn-group mr-15">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
@@ -39,6 +39,11 @@
     </div>
 {{/each}}
 </div>
+
+{{#unless model}}
+    <p class="alert alert-danger" style="text-align: center;padding-bottom: 15px;"> <i class="material-icons" style="position: relative;top: 6px;">sentiment_dissatisfied</i> No data avialable</p>    
+{{/unless}}
+
 
 <div class="add btn btn-primary floating-btn bottom-right" {{action 'newTask'}}>
     <i class="material-icons">edit</i>

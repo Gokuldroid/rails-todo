@@ -5,6 +5,9 @@ export default Component.extend({
     actions: {
         buttonEvent(event, button) {
             this.get('dialogBoxModel.eventListener')(event, button);
+        },
+        close() {
+            this.set('dialogBoxModel.isOpen', false);
         }
     },
     openObserver: Ember.observer('dialogBoxModel.isOpen', function () {
