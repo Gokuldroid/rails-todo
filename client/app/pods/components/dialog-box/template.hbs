@@ -10,7 +10,9 @@
         </button>
       </div>
       <div class="modal-body">
-        {{yield}}
+        {{#if dialogBoxModel.isOpen}}
+          {{yield}}
+        {{/if}}
       </div>
       {{#if dialogBoxModel.buttons}}
       <div class="modal-footer">

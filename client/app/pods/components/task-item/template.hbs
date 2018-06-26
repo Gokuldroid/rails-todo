@@ -5,11 +5,17 @@
     </div>
   </div>
   <div class="p-10">
-    <small class="float-left">Created at : {{date-format task.created_at}}</small>
+    {{#if task.remind_at}}
+      <small class="float-left">Remind at : {{date-format task.remind_at}}</small>
+    {{else if task.dead_line}}
+      <small class="float-left">Deadline : {{date-format task.dead_line}}</small>
+    {{else}}
+      <small class="float-left">Created at : {{date-format task.created_at}}</small>
+    {{/if}}
     <div class="float-right">
       {{task-priority task=task saveOnChange=true}}
     </div>
-    <i class="material-icons float-right material-icons-sm" {{action 'delete'}} style="padding: 2px 10px;">delete</i>
+    <i class="material-icons float-right material-icons-sm" {{action 'delete' bubbles=false}} style="padding: 2px 10px;">delete</i>
   </div>
 </div>
 {{yield}}
