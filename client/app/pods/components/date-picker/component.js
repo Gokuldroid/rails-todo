@@ -18,13 +18,14 @@ export default Component.extend({
             singleDatePicker: this.get('singleDatePicker'),
             timePicker: this.get('timePicker'),
             showDropdowns: true,
+            startDate : moment(this.get('startdate')),
+            endDate : moment(this.get('enddate')), 
             locale: {
                 format: 'MM/DD/YYYY hh:mm a'
             }
         }, function (startdate, enddate, label) {
             _this.set('startdate', new Date(startdate));
             _this.set('enddate', new Date(enddate));
-            console.log(startdate);
         });
     }
 });

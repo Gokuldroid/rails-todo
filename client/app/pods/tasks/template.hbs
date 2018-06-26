@@ -19,7 +19,7 @@
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" {{action "toggleParam" 'hasTodoTasks' bubbles=false}}><i class="material-icons material-icons-done {{if hasTodoTasks 'active'}}">done</i>Show ongoing tasks</a>
                     <a class="dropdown-item" {{action "toggleParam" 'hasDoneTasks' bubbles=false}}><i class="material-icons material-icons-done {{if hasDoneTasks 'active'}}">done</i>Show done tasks</a>
                     <a class="dropdown-item" {{action "toggleParam" 'hasArchieveTasks' bubbles=false}}><i class="material-icons material-icons-done {{if hasArchieveTasks 'active'}}">done</i>Show archieved tasks</a>
