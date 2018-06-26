@@ -10,12 +10,19 @@ export default Controller.extend({
     signup_details: {},
     actions: {
         signup() {
+            let _this = this;
             this.set('signup_clicked', true);
             let signup_details = this.get('signup_details');
             if (isBlank(this.get('input_error'))|| true) {
                 this.get('rails_ajax').post('/signup', { data: signup_details })
                     .then((response) => {
-
+                        this.get('session').authenticate('authenticator:rails-auth', signup_details.username, signup_details.password)
+                        .then(()=>{
+                            _this.transitionToRoute('/tasks');
+                        })
+                        .catch((reason) => {
+                            _this.set('login_error_msg', 'Invalid credentails');
+                        });
                     })
                     .catch((error) =>{
                         console.log(error);
