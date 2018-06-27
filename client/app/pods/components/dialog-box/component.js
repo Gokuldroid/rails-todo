@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Component.extend({
     actions: {
         buttonEvent(event, button) {
-            this.get('dialogBoxModel.eventListener')(event, button);
+            this.set('dialogBoxModel.isOpen',!this.get('dialogBoxModel.eventListener')(event, button));
         },
         close() {
             this.set('dialogBoxModel.isOpen', false);

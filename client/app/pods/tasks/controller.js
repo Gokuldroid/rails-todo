@@ -53,6 +53,11 @@ export default Controller.extend({
             this.send('toggleParam', 'hasTodoTasks');
         }
     }),
+    createTaskError : Ember.computed('saveClicked','createTaskModal.description',function(){
+        if(this.get('saveClicked') && Ember.isEmpty(this.get('createTaskModal.description'))){
+            return 'Description can\'t be empty';
+        }
+    }),
     actions: {
         newTask() {
             this._createNewTask();
@@ -79,11 +84,13 @@ export default Controller.extend({
             this._getTasks();
         },
         editTask(task) {
+            this.set('saveClicked',true);
             this._openTaskModel(task);
         }
     },
     _createNewTask() {
-        let task = this.get('store').createRecord('task', { priority: 3, done_state: 1 });
+        this.set('saveClicked',false);
+        let task = this.get('store').createRecord('task', { priority: 3, done_state: 1,reminder_date : moment().add(1,'days'),dead_line : moment().add(2,'days')});
         this._openTaskModel(task);
     },
     _openTaskModel(task) {
@@ -94,10 +101,16 @@ export default Controller.extend({
             title: `${title} task`,
             buttons,
             eventListener: function (event, button) {
+                _this.set('saveClicked',true);
+                if(!Ember.isEmpty(_this.get('createTaskError'))){
+                    return false;
+                }
                 if (event == 'create') {
                     task.save().then(() => { _this._getTasks() });
+                    return true;
                 } else {
                     task.rollbackAttributes();
+                    return true;
                 }
             }
         });

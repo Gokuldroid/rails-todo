@@ -51,6 +51,7 @@
 {{outlet}}
 
 {{#dialog-box dialogBoxModel=createTaskDialog}}
+{{alert-bar alertMsg=createTaskError}}
 <div class="form-group">
     <label>Description <span class="mandatory">*</span></label>
     {{textarea value=createTaskModal.description class="form-control" placeholder="Description"}}

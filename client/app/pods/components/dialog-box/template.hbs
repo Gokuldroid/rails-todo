@@ -17,7 +17,7 @@
       {{#if dialogBoxModel.buttons}}
       <div class="modal-footer">
         {{#each dialogBoxModel.buttons as |button|}}
-            <button type="button" class="btn {{if button.style button.style 'btn-primary'}}" data-dismiss="modal" {{action 'buttonEvent' button.event button}}>{{button.text}}</button>    
+            <button type="button" class="btn {{if button.style button.style 'btn-primary'}}" {{action 'buttonEvent' button.event button bubbles=false preventDefault=true}}>{{button.text}}</button>    
         {{/each}}
       </div>
       {{/if}}
