@@ -90,7 +90,7 @@ export default Controller.extend({
     },
     _createNewTask() {
         this.set('saveClicked',false);
-        let task = this.get('store').createRecord('task', { priority: 3, done_state: 1,reminder_date : moment().add(1,'days'),dead_line : moment().add(2,'days')});
+        let task = this.get('store').createRecord('task', { priority: 3, done_state: 1,reminder_date : moment().add(1,'days').toDate(),dead_line : moment().add(2,'days').toDate()});
         this._openTaskModel(task);
     },
     _openTaskModel(task) {
