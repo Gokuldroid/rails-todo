@@ -8,7 +8,7 @@ module TasksidekiqHelper
       puts Time.now.utc
       remind_at = ((task.reminder_date - Time.now) / 60).to_int
       puts "reminding #{task.description} in #{remind_at} miniutes"
-      ReminderSenderWorker.perform_in(remind_at.minutes, task.id)
+      puts ReminderSenderWorker.perform_in(remind_at.minutes, task.id)
     else
       puts 'not adding sidekiq'
     end
