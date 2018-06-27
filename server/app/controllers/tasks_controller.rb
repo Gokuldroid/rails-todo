@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :authenticate_request!
 
   def index
-    # @tasks = Task.all
     result = filter_user(Task)
     result = filter_options(result)
     result = done_state(result)
@@ -28,6 +27,7 @@ class TasksController < ApplicationController
     task.user_id = @current_user.id
 
     if task.save
+      TasksidekiqHelper.add_task(task)
       render json: { status: 'success', task: task }, status: :ok
     else
       render json: { status: 'failed' }, status: :ok
