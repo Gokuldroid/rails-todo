@@ -1,0 +1,6 @@
+<span style="position: absolute;right: 0;">
+    <i class="material-icons material-icons-sm float-right p-10" data-toggle="dropdown-task" aria-haspopup="true" aria-expanded="false" {{action 'toggleDropdown' bubbles=false}}>more_vert</i>
+    <div class="dropdown-menu dropdown-menu-right {{if dropdownOpen 'show'}}">
+        {{yield}}
+    </div>
+</span>

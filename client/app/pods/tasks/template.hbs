@@ -35,7 +35,7 @@
 <div class="row">
 {{#each model as |task|}}
     <div {{action "editTask" task}} class="col-4">
-        {{task-item task=task on-delete=(action 'refreshModel')}}
+        {{task-item task=task on-model-change=(action 'refreshModel')}}
     </div>
 {{/each}}
 </div>
