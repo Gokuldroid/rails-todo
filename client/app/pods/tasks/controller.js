@@ -101,17 +101,19 @@ export default Controller.extend({
             title: `${title} task`,
             buttons,
             eventListener: function (event, button) {
+                if(event == 'cancel'){
+                    return true;
+                }
                 _this.set('saveClicked',true);
                 if(!Ember.isEmpty(_this.get('createTaskError'))){
                     return false;
                 }
                 if (event == 'create') {
                     task.save().then(() => { _this._getTasks() });
-                    return true;
                 } else {
                     task.rollbackAttributes();
-                    return true;
                 }
+                return true;
             }
         });
         this.set('createTaskDialog', box);

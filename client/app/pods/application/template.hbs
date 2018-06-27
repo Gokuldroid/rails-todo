@@ -1,16 +1,17 @@
 <header class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="#">Taskr</a>
+  {{!-- <a class="navbar-brand" href="#">Taskr</a> --}}
+  {{#link-to 'tasks' class='navbar-brand'}}Taskr{{/link-to}}
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse {{visible session.isAuthenticated}}" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
+      {{!-- <li class="nav-item">
         {{#link-to 'tasks' class='nav-link'}}Tasks{{/link-to}}
-      </li>
-      <li class="nav-item">
+      </li> --}}
+      {{!-- <li class="nav-item">
         {{#link-to 'settings' class='nav-link'}}Settings{{/link-to}}
-      </li>
+      </li> --}}
     </ul>
   </div>
   <div class="navbar-text">
