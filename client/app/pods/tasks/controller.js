@@ -88,13 +88,20 @@ export default Controller.extend({
             this._openTaskModel(task);
         },
         export() {
+            $.notify({
+                message: 'Exporting scheduled this may take a while',
+                type: 'primary'
+            });
             let queryParams = this._getQueryParams();
             this.get('rails_ajax').request('/export', { method: 'GET', data: queryParams })
                 .then((response) => {
-                    console.log('success');
+                    $.notify({
+                        message: 'Successfully exported and sent to your mail',
+                        type: 'primary'
+                    });
                 })
                 .catch((error) => {
-                    console.log(error);
+                    $.notify('Error occured while exporting');
                 });
         }
     },
