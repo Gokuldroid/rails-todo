@@ -12,9 +12,15 @@ module.exports = {
     'plugin:ember/recommended'
   ],
   env: {
-    browser: true
+    browser: true,
+    es6: true,
+    jquery: true
   },
   rules: {
+    "no-unused-vars": 0
+  },
+  globals: {
+    "moment": true
   },
   overrides: [
     // node files

@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import Ember from 'ember';
+import { isBlank } from '@ember/utils';
 
 export function invisible(params, hash) {
   let condition = hash.condition || 'all';
@@ -17,7 +17,7 @@ export function invisible(params, hash) {
       }
     }
   }
-  return !Ember.isBlank(params) ? 'invisible' : 'visible';
+  return !isBlank(params) ? 'invisible' : 'visible';
 }
 
 export default helper(invisible);

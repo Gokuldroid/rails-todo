@@ -1,10 +1,9 @@
 import Base from 'ember-simple-auth/authenticators/base';
-import RSVP from 'rsvp';
-import Ember from 'ember';
+import { inject } from '@ember/service';
 
 export default Base.extend({
-    rails_ajax: Ember.inject.service(),
-    session: Ember.inject.service(),
+    rails_ajax: inject(),
+    session: inject(),
     restore(data) {
         return new Promise(function (resolve, reject) {
             resolve(data);

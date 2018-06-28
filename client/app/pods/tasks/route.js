@@ -10,7 +10,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
     },
     actions: {
         error(error, transition) {
-            console.log('error occured');
             return true;
         }
     }
