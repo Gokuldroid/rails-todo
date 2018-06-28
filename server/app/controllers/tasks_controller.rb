@@ -11,6 +11,16 @@ class TasksController < ApplicationController
     render json: { tasks: result, meta: { pagination: pagination } }, status: :ok
   end
 
+  def export
+    result = filter_user(Task)
+    result = filter_options(result)
+    result = done_state(result)
+    result = sort_by(result)
+    file = CsvExportHelper.export("#{Rails.root}/export/export#{Time.now.to_f}.csv", result)
+    MailerHelper.send_mail_with_file(@current_user.email, 'Exported file', 'Please find attachement for export', file)
+    render json: { status: 'File successfully mailed' }, status: :ok
+  end
+
   def destroy
     task = filter_id(filter_user(Task), params[:id])
     if task.delete_all

@@ -49,3 +49,4 @@ node_modules/
 
 docker-source/nginx-src/logs/access.log
 server/config/application.yml
+server/export/**

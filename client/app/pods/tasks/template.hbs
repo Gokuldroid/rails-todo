@@ -14,7 +14,7 @@
         </li>
         <div class="nav-item pointer dropdown ml-auto">
              {{pagination-bar on-page-change=(action 'onTaskPageChange') pagination=pagination class='float-right'}}
-            <button type="button" class="btn btn-icn btn-outline-secondary float-right mr-15 {{unless pagination.total_pages 'd-none'}}">Expoer as CVS <i class="material-icons">cloud_download</i></button>
+            <button type="button" class="btn btn-icn btn-outline-secondary float-right mr-15 {{unless pagination.total_pages 'd-none'}}" {{action 'export' bubbles=false}}>Expoer as CVS <i class="material-icons">cloud_download</i></button>
             <div class="btn-group mr-15">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     More

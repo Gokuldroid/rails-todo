@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   resources :tasks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  #sidekiq and redis
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  mount RedisBrowser::Web => '/redis'
+
+
+  get '/export' => 'tasks#export'
   post '/login' => 'authentication#authenticate_user'
   post '/signup' => 'authentication#signup_user'
 end
